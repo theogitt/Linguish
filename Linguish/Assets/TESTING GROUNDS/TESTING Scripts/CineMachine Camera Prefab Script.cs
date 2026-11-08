@@ -25,7 +25,7 @@ public class CineMachineCameraPrefabScript : MonoBehaviour
 
         if (player == null && CineCamera == null)
         {
-            Debug.LogError("Prob Forgot to add the 'Player' tag to your player, and/or the CinemachineCamera component is missing.");
+            Debug.LogError("CineMachineCameraPrefabScript: Prob Forgot to add the 'Player' tag to your player, and/or the CinemachineCamera component is missing.");
             return;
         }
 
