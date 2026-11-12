@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 
-public class CineMachineCameraPrefabScript : MonoBehaviour
+public class CineMachineCameraPrefabScript_TESTING : MonoBehaviour
 {
 
     /*
@@ -34,11 +34,5 @@ public class CineMachineCameraPrefabScript : MonoBehaviour
             CineCamera.Follow = player.transform;
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
