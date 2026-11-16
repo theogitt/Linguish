@@ -10,7 +10,7 @@ using UnityEngine;
  * WE CAN GO WILDDDD HERE
  */
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement_TESTING : MonoBehaviour
 {
 
     public CharacterController pController;
