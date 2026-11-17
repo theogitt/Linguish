@@ -13,6 +13,7 @@ public class PlayerInterection_TESTING : MonoBehaviour
  */
 
     [SerializeField] private float interactionRange = 2f;
+    [SerializeField] public KeyCode interactionKey = KeyCode.E;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +24,7 @@ public class PlayerInterection_TESTING : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(interactionKey))
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);  
 
@@ -49,5 +50,24 @@ public class PlayerInterection_TESTING : MonoBehaviour
                 }
             }
         }  
+    }
+
+    public InteractableInfo_TESTING GetInteractableObject()
+    {
+        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, interactionRange);
+
+        foreach (Collider objects in nearbyObjects)
+        {
+            if (objects.CompareTag("Interactable"))
+            {
+                InteractableInfo_TESTING info = objects.GetComponentInParent<InteractableInfo_TESTING>();
+                if (info != null)
+                {
+                    return info;
+                }
+            }
+        }
+
+        return null; // No interactable NPC found
     }
 }

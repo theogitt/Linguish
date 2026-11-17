@@ -3,7 +3,7 @@ using UnityEngine;
 public class NPCInterectable_TESTING : MonoBehaviour
 {
 
-    public NPCData_TESTING Data;
+    public NPCDataSO_TESTING Data;
     
 
     public void Interact()
