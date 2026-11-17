@@ -3,11 +3,8 @@ using UnityEngine;
 
 /*
  * PLAYER MOVEMENT 
- * Use this code file to test player movement and other related features. 
- * Play as much as u like.
+ * Use this code file for the player movement and other related features. 
  * ITS ATTACHED TO THE PLAYER PREFAB.
- * 
- * WE CAN GO WILDDDD HERE
  */
 
 public class PlayerMovement : MonoBehaviour
