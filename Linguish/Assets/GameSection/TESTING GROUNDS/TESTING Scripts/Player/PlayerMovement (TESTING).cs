@@ -19,6 +19,16 @@ public class PlayerMovement_TESTING : MonoBehaviour
 
     [SerializeField] public float SmoothTurn = 0.1f;
     [SerializeField] public float turnSmoothVelocity = 0.1f;
+
+
+    void Start()
+    {
+        if (pController == null)
+        {
+            pController = GetComponent<CharacterController>();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

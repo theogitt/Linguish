@@ -3,22 +3,22 @@ using UnityEngine;
 public class PlayerInterection_TESTING : MonoBehaviour
 {
 
-/*
- * PLAYER INTERECTION
- * Use this code file to test player interaction and other related features. 
- * Play as much as u like.
- * ITS ATTACHED TO THE PLAYER PREFAB.
- * 
- * WE CAN GO WILDDDD HERE
- */
+    /*
+     * PLAYER INTERECTION
+     * Use this code file to test player interaction and other related features. 
+     * Play as much as u like.
+     * ITS ATTACHED TO THE PLAYER PREFAB.
+     * 
+     * WE CAN GO WILDDDD HERE
+     */
 
     [SerializeField] private float interactionRange = 2f;
-    [SerializeField] public KeyCode interactionKey = KeyCode.E;
+    public KeyCode interactionKey = KeyCode.E;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class PlayerInterection_TESTING : MonoBehaviour
     {
         if (Input.GetKeyDown(interactionKey))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);  
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);
 
             foreach (Collider hitCollider in hitColliders)
             {
@@ -49,25 +49,36 @@ public class PlayerInterection_TESTING : MonoBehaviour
 
                 }
             }
-        }  
+        }
     }
 
     public InteractableInfo_TESTING GetInteractableObject()
     {
         Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, interactionRange);
 
+        InteractableInfo_TESTING closestInteractable = null;
+        float closestDistance = interactionRange;
+
         foreach (Collider objects in nearbyObjects)
         {
-            if (objects.CompareTag("Interactable"))
+
+            InteractableInfo_TESTING info = objects.GetComponentInParent<InteractableInfo_TESTING>();
+
+            if (info != null)
             {
-                InteractableInfo_TESTING info = objects.GetComponentInParent<InteractableInfo_TESTING>();
-                if (info != null)
+                if (objects.CompareTag("Interactable"))
                 {
-                    return info;
+                    float distance = Vector3.Distance(transform.position, objects.ClosestPoint(transform.position));
+
+                    if (distance <= closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestInteractable = info;
+                    }
                 }
             }
         }
 
-        return null; // No interactable NPC found
+        return closestInteractable; 
     }
 }

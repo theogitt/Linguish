@@ -58,7 +58,7 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
 
         if (interactableObjectData == null)
         {
-            interactableObjectText.text = "Interact with ?????";
+            interactableObjectText.text = "Interact"; // Yo Ethan please clarify if I should keep the "?????", I had it there just in case we had lik a mysterious item.
             Debug.LogWarning("Interactable Object Data is null.");
             return;
         }
