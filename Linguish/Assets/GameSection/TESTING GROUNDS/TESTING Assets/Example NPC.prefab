@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8330589176604991717}
   - component: {fileID: 3980364604892391544}
   - component: {fileID: 9024596650956660636}
-  - component: {fileID: 3086444100215298116}
+  - component: {fileID: 7660262953956951524}
   m_Layer: 0
   m_Name: Example NPC
   m_TagString: Interactable
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCInterectable_TESTING
   Data: {fileID: 11400000, guid: ae993cc8a01b48a4484b81e852500f71, type: 2}
---- !u!114 &3086444100215298116
+--- !u!114 &7660262953956951524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,9 +138,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3753327251755741860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652b9a96d8d1c6d4c99465e666c81b8e, type: 3}
+  m_Script: {fileID: 11500000, guid: b8872ecf6b7124a47ada488c800dce16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableInfo_TESTING
-  interactableData: {fileID: 11400000, guid: 3b36380274244af45b00c4c3af246a80, type: 2}
+  interactableData: {fileID: 11400000, guid: de148c20f0a17ba47844c93f6a42baf5, type: 2}
   npcData: {fileID: 11400000, guid: ae993cc8a01b48a4484b81e852500f71, type: 2}
-  npcInteractable: {fileID: 9024596650956660636}
+  npcInteractable: {fileID: 0}

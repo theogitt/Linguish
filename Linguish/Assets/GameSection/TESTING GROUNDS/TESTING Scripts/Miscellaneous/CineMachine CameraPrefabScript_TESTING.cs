@@ -23,16 +23,21 @@ public class CineMachineCameraPrefabScript_TESTING : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player == null && CineCamera == null)
+        if (player == null)
         {
-            Debug.LogError("CineMachineCameraPrefabScript: Prob Forgot to add the 'Player' tag to your player, and/or the CinemachineCamera component is missing.");
+            Debug.LogError("CineMachineCameraPrefabScript: Prob forgot to add the Player gameobject.");
             return;
         }
 
-        else
+        if (CineCamera == null)
         {
-            CineCamera.Follow = player.transform;
+            Debug.LogError("CineMachineCameraPrefabScript: Prob forgot to add the CinemachineCamera component is missing.");
+            return;
         }
+
+
+        CineCamera.Follow = player.transform;
+
 
     }
 }

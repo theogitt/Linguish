@@ -16,25 +16,29 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
         if (containerInteractionKeyUI == null)
         {
             Debug.LogError("Container Interaction Key UI is not assigned in the inspector.");
+            enabled = false;
             return;
         }
 
         if (interactionKeyText == null)
         {
             Debug.LogError("Interaction Key Text is not assigned in the inspector.");
+            enabled = false;
             return;
         }
 
         if (interactableObjectText == null)
         {
             Debug.LogError("Interactable Object Text is not assigned in the inspector.");
+            enabled = false;
             return;
         }
 
         if (playerInteraction == null)
         {
-            Debug.LogError("Player Interaction is not assigned in the inspector.");
-            return;
+            Debug.LogError("Player Interaction is not assigned in the inspector. Attempting to find it in the scene...");
+
+            playerInteraction = FindFirstObjectByType<PlayerInterection_TESTING>();
         }
 
         
@@ -103,6 +107,32 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
 
     private void Update()
     {
+
+        if (playerInteraction == null)
+        {
+            Debug.LogError("Player Interaction is not assigned in the inspector. Attempting to find it in the scene...");
+            playerInteraction = FindFirstObjectByType<PlayerInterection_TESTING>();
+
+            if (playerInteraction == null)
+            {
+                Debug.LogError("Player Interaction could not be found in the scene.");
+                Hide();
+                return;
+            }
+        }
+
+        if (interactionKeyText == null)
+        {
+            Debug.LogError("Interaction Key Text is not assigned in the inspector.");
+            return;
+        }
+
+        if (interactableObjectText == null)
+        {
+            Debug.LogError("Interactable Object Text is not assigned in the inspector.");
+            return;
+        }
+
         interactionKeyText.text = playerInteraction.interactionKey.ToString();
 
 

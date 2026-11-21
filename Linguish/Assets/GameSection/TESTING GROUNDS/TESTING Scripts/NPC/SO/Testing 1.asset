@@ -17,4 +17,5 @@ MonoBehaviour:
   npcRole: 
   npcSociety: 
   npcImage: {fileID: 0}
-  npcDialogue: 
+  npcDialogue: Hello, Anthony here, this is just a test dialgoue to figure out if
+    Dialogue system works
