@@ -1,3 +1,4 @@
+using System.Numerics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,8 +12,13 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactableObjectText;
 
 
+    [SerializeField] private Camera mainCamera;
+    // [SerializeField] private Vector2 offset = new System.Numerics.Vector2(80f, 20f); // Use this to move around the helper, we can just leave it here after just in case we want to move it again
+
+
     private void Start()
     {
+
         if (containerInteractionKeyUI == null)
         {
             Debug.LogError("Container Interaction Key UI is not assigned in the inspector.");
@@ -36,9 +42,22 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
 
         if (playerInteraction == null)
         {
-            Debug.LogError("Player Interaction is not assigned in the inspector. Attempting to find it in the scene...");
+            Debug.LogError("PLAYER INTERACTION: Player Interaction is not assigned in the inspector. Attempting to find it in the scene...");
 
             playerInteraction = FindFirstObjectByType<PlayerInterection_TESTING>();
+        }
+
+        if (mainCamera == null)
+        {
+            Debug.Log ("MAIN CAMERA:Main Camera not found, attempting to find it");
+            mainCamera = Camera.main;
+        }
+
+        if (mainCamera == null)
+        {
+            Debug.Log("MAIN CAMERA: G u sure u seeing the game, cause we cant find th emain camera");
+            enabled = false;
+            return;
         }
 
         
@@ -119,6 +138,12 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
                 Hide();
                 return;
             }
+        }
+
+        if (mainCamera == null)
+        {
+            Hide();
+            return;
         }
 
         if (interactionKeyText == null)

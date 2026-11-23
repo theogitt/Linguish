@@ -6,6 +6,8 @@ public class InteractableInfo_TESTING : MonoBehaviour
     public NPCDataSO_TESTING npcData;
     public NPCInterectable_TESTING npcInteractable;
 
+    public Transform interactionHelper;
+
     void Start()
     {
 
