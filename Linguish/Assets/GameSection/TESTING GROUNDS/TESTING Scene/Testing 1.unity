@@ -760,17 +760,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &702282913 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6769014322752100714, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-  m_PrefabInstance: {fileID: 5857261001545295110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &833434329
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,32 +891,6 @@ MonoBehaviour:
   npcData: {fileID: 0}
   npcInteractable: {fileID: 0}
   interactionHelper: {fileID: 0}
---- !u!1 &1011599933 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7467898860474007814, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-  m_PrefabInstance: {fileID: 5857261001545295110}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1201332951 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6982523837790997871, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-  m_PrefabInstance: {fileID: 5857261001545295110}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1201332954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201332951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f87c0c2229a2342a5d81e8beb1aaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractionKeyUI_TESTING
-  containerInteractionKeyUI: {fileID: 1011599933}
-  playerInteraction: {fileID: 8498318349730496704}
-  interactionKeyText: {fileID: 702282913}
-  interactableObjectText: {fileID: 1979819384}
 --- !u!1 &1222139714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,17 +1129,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1979819384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2674530576106352143, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-  m_PrefabInstance: {fileID: 5857261001545295110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &2367830426046395564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1350,49 +1302,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2674530576106352143, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: m_text
-      value: INTERACT WITH ????
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674530576106352143, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782468249787412520, guid: aab2816e670bbb548a8959624459a03b, type: 3}
+    - target: {fileID: 1997027812401779631, guid: aab2816e670bbb548a8959624459a03b, type: 3}
       propertyPath: playerInteraction
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782468249787412520, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: interactionKeyText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782468249787412520, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: interactableObjectText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782468249787412520, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: containerInteractionKeyUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123287843251620214, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8498318349730496704}
     - target: {fileID: 6372322153530124450, guid: aab2816e670bbb548a8959624459a03b, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6982523837790997871, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6381362642868104803, guid: aab2816e670bbb548a8959624459a03b, type: 3}
+      propertyPath: playerInteraction
+      value: 
+      objectReference: {fileID: 8498318349730496704}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6982523837790997871, guid: aab2816e670bbb548a8959624459a03b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1201332954}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aab2816e670bbb548a8959624459a03b, type: 3}
 --- !u!1001 &6740869027052096546
 PrefabInstance:
