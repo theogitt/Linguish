@@ -122,7 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6642238034992891989}
   - component: {fileID: 2224203072669895872}
-  - component: {fileID: 7387956103678390248}
+  - component: {fileID: 8425505274452660090}
+  - component: {fileID: 6182901353073214784}
   m_Layer: 0
   m_Name: TESTING Player
   m_TagString: Player
@@ -171,7 +172,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7387956103678390248
+--- !u!114 &8425505274452660090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,10 +181,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3695830530107162338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3010c04dbe637479def3eecc76d529, type: 3}
+  m_Script: {fileID: 11500000, guid: aee50111adcb51945a0524eac5de1f1f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  pController: {fileID: 2224203072669895872}
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInterection_TESTING
+  interactionRange: 2
+  interactionKey: 101
+--- !u!114 &6182901353073214784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695830530107162338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcfe8a7fa8cb974aa50ed33e2aff03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement_TESTING
+  pController: {fileID: 0}
   spd: 12
   SmoothTurn: 0.1
   turnSmoothVelocity: 0.1
