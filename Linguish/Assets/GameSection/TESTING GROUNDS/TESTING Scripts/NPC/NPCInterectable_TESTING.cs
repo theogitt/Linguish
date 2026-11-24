@@ -5,8 +5,18 @@ public class NPCInterectable_TESTING : MonoBehaviour
 
     public NPCDataSO_TESTING Data;
 
-    private bool isTalking = false;
-    
+    [SerializeField] private DialogueUI_TESTING dialogueUI;
+
+    // private bool isTalking = false;
+
+
+    void Start()
+    {
+        if (dialogueUI == null)
+        {
+            dialogueUI = FindAnyObjectByType<DialogueUI_TESTING>();
+        }
+    }
 
     public void Interact()
     {
@@ -16,21 +26,27 @@ public class NPCInterectable_TESTING : MonoBehaviour
             return;
         }
 
-        if (string.IsNullOrEmpty(Data.npcName))
+        if (dialogueUI == null)
         {
-            Debug.LogWarning("NPC Name is not assigned in the data for " + gameObject.name);
+            dialogueUI = FindAnyObjectByType<DialogueUI_TESTING>();
+        }
+
+
+        if (dialogueUI == null)
+        {
             return;
         }
 
-        if (string.IsNullOrEmpty(Data.npcDialogue))
+        string npcName = Data.name;
+
+
+        if (string.IsNullOrEmpty(npcName))
         {
-            Debug.LogWarning("NO NPC DIALOGUE ASSIGNED FOR " + gameObject.name);
-            return;
+            npcName = gameObject.name;
         }
-
-        Debug.Log("Dialogue for " + Data.npcName + ": " + Data.npcDialogue);
-
 
         // ADD DIALOGUE SYSTEM/UI LOGIC HERE, also set isTalking to true when dialogue starts and false when it ends 
+        dialogueUI.ShowDialogue(Data.npcName, Data.npcDialogue);
+        Debug.Log("Dialogue for " + Data.npcName + ": " + Data.npcDialogue);
     }
 }
