@@ -283,9 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueUI_TESTING
   containerDialogueUI: {fileID: 2007469001}
-  playerInteraction: {fileID: 8498318349730496704}
-  dialogueText: {fileID: 0}
-  interactableName: {fileID: 0}
+  dialogueText: {fileID: 1951854200}
+  interactableName: {fileID: 389135245}
 --- !u!1 &272336762
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +704,17 @@ MonoBehaviour:
   npcData: {fileID: 11400000, guid: 54ed4a4aaca5ec5419e441c17184eeb5, type: 2}
   npcInteractable: {fileID: 0}
   interactionHelper: {fileID: 0}
+--- !u!114 &389135245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1072518481146435153, guid: aab2816e670bbb548a8959624459a03b, type: 3}
+  m_PrefabInstance: {fileID: 5857261001545295110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &628404795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,6 +1164,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1951854200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1807085435896082613, guid: aab2816e670bbb548a8959624459a03b, type: 3}
+  m_PrefabInstance: {fileID: 5857261001545295110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2007469001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7647418740396757809, guid: aab2816e670bbb548a8959624459a03b, type: 3}
