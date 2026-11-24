@@ -14,10 +14,21 @@ public class GlyphDictionaryIcon : MonoBehaviour
         graphemeName = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    public void setVisual(Grapheme grapheme)
+    public void setVisual(Grapheme grapheme, VisualStyle visualStyle = VisualStyle.IMAGE)
     {
         if(grapheme == null) return;
         graphemeImage.sprite = grapheme.graphemeImage;
-        graphemeName.text = grapheme.graphemeMeaning;
+        if(visualStyle == VisualStyle.IMAGE_AND_TEXT) graphemeName.text = grapheme.graphemeMeaning;
+    }
+
+    public void selectGrapheme()
+    {
+        transform.GetComponentInParent<GraphemeDictionary>()
+            .displaySelectedGrapheme(transform.GetSiblingIndex());
+    }
+
+    public enum VisualStyle{
+        IMAGE,
+        IMAGE_AND_TEXT
     }
 }
