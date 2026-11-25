@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -6,9 +7,16 @@ using UnityEngine;
 
 public class GlyphGrid : MonoBehaviour
 {
-    [SerializeField] private Grapheme[] graphemeGrid = new Grapheme[6];
     private Dictionary<RectTransform, int> usedTransforms = new Dictionary<RectTransform, int>();
-    [SerializeField] Phrase correctPhrase;
+    public Action<bool> phraseValidated;
+    [SerializeField] Word correctPhrase;
+    private void Start() {
+        phraseValidated += print;
+    }
+    private void OnEnable()
+    {
+        usedTransforms.Clear();
+    }
     public void snapToGrid(RectTransform rectTransform)
     {
         foreach(RectTransform rect in GetComponentsInChildren<RectTransform>())
@@ -17,35 +25,45 @@ public class GlyphGrid : MonoBehaviour
             if(isOverlapping(rectTransform, rect))
             {
                 rectTransform.position = rect.position;
-                assignGrapheme(rect.GetSiblingIndex(), rectTransform.GetComponent<GraphemeDragger>().getGrapheme());
-                if(!usedTransforms.ContainsKey(rectTransform)) usedTransforms.Add(rectTransform, rect.GetSiblingIndex());
-                else usedTransforms[rectTransform] = rect.GetSiblingIndex();
-                foreach(KeyValuePair<RectTransform, int> keyValuePair in usedTransforms)
-                {
-                    Debug.Log(keyValuePair.Value);
-                }
+                assignGrapheme(rect.GetSiblingIndex(), rectTransform);
                 return;
             }
         }
         if(usedTransforms.ContainsKey(rectTransform)) usedTransforms.Remove(rectTransform);
     }
 
-    public void assignGrapheme(int index, Grapheme grapheme)
+    public void assignGrapheme(int index, RectTransform rectTransform)
     {
-        graphemeGrid[index] = grapheme;
+        if(!usedTransforms.ContainsKey(rectTransform)) usedTransforms.Add(rectTransform, index);
+        else usedTransforms[rectTransform] = index;
     }
 
     public void validatePhrase()
     {
-        for(int i = 0; i < graphemeGrid.Length; i++)
+        Word[] graphs = new Word[6];
+        //Makes a list of graphemes from the attached parts
+        foreach(KeyValuePair<RectTransform, int> keyValuePair in usedTransforms)
         {
-            if(graphemeGrid[i] != correctPhrase.phrase[i])
-            {
-                Debug.Log("NO"); 
-                return;
-            }
+            graphs[keyValuePair.Value] = keyValuePair.Key.GetComponent<GraphemeDragger>().getGrapheme();
         }
-        Debug.Log("YES");
+        
+        //If a part of the correct phrase is not correct then return false
+        for(int i = 0; i < 6; i++)
+        {
+            if(correctPhrase.composition[i] != graphs[i])
+            {
+                phraseValidated.Invoke(false);
+                return;
+            } 
+        }
+        //Tell it that its true
+        phraseValidated.Invoke(true);
+    }
+
+    private void print(bool b)
+    {
+        if(b) Debug.Log("Validated");
+        else Debug.Log("Unvalidated");
     }
 
     private bool isOverlapping(RectTransform obj1, RectTransform obj2)

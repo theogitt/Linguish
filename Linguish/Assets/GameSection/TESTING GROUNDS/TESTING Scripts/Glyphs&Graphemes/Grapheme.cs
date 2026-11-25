@@ -5,5 +5,5 @@ using UnityEngine.UI;
 public class Grapheme : ScriptableObject
 {
     public Sprite graphemeImage;
-    public string graphemeMeaning;
+    public int graphemeID;
 }

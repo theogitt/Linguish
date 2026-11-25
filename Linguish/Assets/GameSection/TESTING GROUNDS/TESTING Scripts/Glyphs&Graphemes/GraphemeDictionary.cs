@@ -10,18 +10,18 @@ using UnityEngine.UI;
 public class GraphemeDictionary : MonoBehaviour
 {
     [SerializeField] private int unlockableGraphemeCount = 16;
-    [SerializeField] private List<Grapheme> unlockedGraphemes = new List<Grapheme>();
-    [SerializeField] private Grapheme nullGrapheme;
+    [SerializeField] private List<Word> unlockedGraphemes = new List<Word>();
+    [SerializeField] private Word nullGrapheme;
 
     [Header("Selected Grapheme Display")]
     [SerializeField] private Image displayImage;
     [SerializeField] private TextMeshProUGUI displayText;
-    public List<Grapheme> UnlockedGraphemes
+    public List<Word> UnlockedGraphemes
     {
         get {return this.unlockedGraphemes;}
     }
 
-    public void unlockGrapheme(Grapheme grapheme)
+    public void unlockGrapheme(Word grapheme)
     {
         if(unlockedGraphemes.Contains(grapheme)) return;
         else unlockedGraphemes.Add(grapheme);
@@ -32,8 +32,8 @@ public class GraphemeDictionary : MonoBehaviour
     {
         StringBuilder returnString = new StringBuilder();
 
-        foreach(Grapheme g in unlockedGraphemes)
-            returnString.Append(g.graphemeMeaning + "\n");
+        // foreach(Word g in unlockedGraphemes)
+        //     returnString.Append(g.graphemeMeaning + "\n");
         
         return returnString.ToString();
     }
@@ -51,9 +51,10 @@ public class GraphemeDictionary : MonoBehaviour
         }
     }
 
-    public void displaySelectedGrapheme(int dictionarySelection)
+    public void displaySelectedGrapheme(int dictionarySelection, int angle = 0)
     {
-        this.displayImage.sprite = unlockedGraphemes[dictionarySelection].graphemeImage;
-        this.displayText.text = unlockedGraphemes[dictionarySelection].graphemeMeaning;
+        this.displayImage.transform.rotation = Quaternion.Euler(0,0,90 * angle);
+        //this.displayImage.sprite = unlockedGraphemes[dictionarySelection].graphemeImage;
+        //this.displayText.text = unlockedGraphemes[dictionarySelection].graphemeMeanings[angle];
     }
 }

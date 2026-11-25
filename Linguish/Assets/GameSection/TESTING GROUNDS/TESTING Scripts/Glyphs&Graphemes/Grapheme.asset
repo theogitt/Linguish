@@ -12,5 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5da8e7a23404d4b85886af538478e0, type: 3}
   m_Name: Grapheme
   m_EditorClassIdentifier: Assembly-CSharp::Grapheme
-  graphemeImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  graphemeMeaning: Complete
+  wordImage: {fileID: 0}
+  wordMeaning: 
+  composition:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rotations: 000000000000000000000000000000000000000000000000
