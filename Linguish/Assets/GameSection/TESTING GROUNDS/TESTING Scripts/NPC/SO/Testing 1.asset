@@ -19,3 +19,4 @@ MonoBehaviour:
   npcImage: {fileID: 0}
   npcDialogue: Hello, Anthony here, this is just a test dialgoue to figure out if
     Dialogue system works
+  npcSpeechBubble: []

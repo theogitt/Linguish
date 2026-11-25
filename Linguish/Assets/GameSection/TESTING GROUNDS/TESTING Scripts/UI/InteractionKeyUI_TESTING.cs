@@ -1,4 +1,4 @@
-using System.Numerics;
+using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,7 +13,7 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
 
 
     [SerializeField] private Camera mainCamera;
-    // [SerializeField] private Vector2 offset = new System.Numerics.Vector2(80f, 20f); // Use this to move around the helper, we can just leave it here after just in case we want to move it again
+    [SerializeField] private Vector2 offset = new Vector2(80f, 20f); // Use this to move around the helper, we can just leave it here after just in case we want to move it again
 
 
     private void Start()
@@ -44,12 +44,12 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
         {
             Debug.LogError("PLAYER INTERACTION: Player Interaction is not assigned in the inspector. Attempting to find it in the scene...");
 
-            playerInteraction = FindFirstObjectByType<PlayerInterection_TESTING>();
+            playerInteraction = FindAnyObjectByType<PlayerInterection_TESTING>();
         }
 
         if (mainCamera == null)
         {
-            Debug.Log ("MAIN CAMERA:Main Camera not found, attempting to find it");
+            Debug.Log("MAIN CAMERA:Main Camera not found, attempting to find it");
             mainCamera = Camera.main;
         }
 
@@ -60,7 +60,7 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
             return;
         }
 
-        
+
         Hide();
     }
     private void Show()
@@ -99,7 +99,7 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
             if (!string.IsNullOrEmpty(npcData.npcName))
             {
                 interactableName = npcData.npcName;
-                
+
             }
             interactableObjectText.text = $"Talk with {interactableName}";
         }
@@ -122,15 +122,15 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
             interactableObjectText.text = $"Interact with {interactableName}";
         }
     }
-    
 
-    private void Update()
+
+    private void Update() //Testing thigns out change to "LateUpdate()" if anything seems delayed
     {
 
         if (playerInteraction == null)
         {
             Debug.LogError("Player Interaction is not assigned in the inspector. Attempting to find it in the scene...");
-            playerInteraction = FindFirstObjectByType<PlayerInterection_TESTING>();
+            playerInteraction = FindAnyObjectByType<PlayerInterection_TESTING>();
 
             if (playerInteraction == null)
             {
@@ -142,8 +142,13 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
 
         if (mainCamera == null)
         {
-            Hide();
-            return;
+            mainCamera = Camera.main;
+
+            if (mainCamera == null)
+            {
+                Hide();
+                return;
+            }
         }
 
         if (interactionKeyText == null)
@@ -158,12 +163,47 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
             return;
         }
 
+
+
+        InteractableInfo_TESTING interactable = playerInteraction.GetInteractableObject(); //What can the player interact with?
+
+        if (interactable == null)
+        {
+            Hide();
+            return;
+        }
+
+        Vector3 objectPosition = interactable.transform.position;
+
+        objectPosition.y = objectPosition.y + 1.5f; //Leave this for now, it is to move the UI helper above the model (Key, Door, NPC, etc)
+
+
+        if (interactable.interactionHelper != null)
+        {
+            objectPosition = interactable.interactionHelper.position;
+        }
+
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(objectPosition);
+
+
+        //We checking if the player has gone behind the UI helper or not
+        if (screenPosition.z <= 0)
+        {
+            Hide();
+            return;
+        }
+
+        screenPosition.x = screenPosition.x + offset.x;
+        screenPosition.y = screenPosition.y + offset.y;
+
+        containerInteractionKeyUI.transform.position = screenPosition;
+
         interactionKeyText.text = playerInteraction.interactionKey.ToString();
 
 
         if (playerInteraction.GetInteractableObject() != null)
         {
-            GetInteractableObjectText(playerInteraction.GetInteractableObject());
+            GetInteractableObjectText(interactable);
             Show();
         }
         else

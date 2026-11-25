@@ -14,42 +14,82 @@ public class PlayerInterection_TESTING : MonoBehaviour
 
     [SerializeField] private float interactionRange = 2f;
     public KeyCode interactionKey = KeyCode.E;
+    public KeyCode advanceDialogue = KeyCode.Space;
+
+    [SerializeField] private DialogueUI_TESTING dialogueUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (dialogueUI == null)
+        {
+            dialogueUI = FindAnyObjectByType<DialogueUI_TESTING>();
+        }
 
+        if (dialogueUI == null)
+        {
+            Debug.LogWarning("UI for Dialogue couldn't be found");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (isDialogueOpen())
+        {
+            if (Input.GetKeyDown(advanceDialogue))
+            {
+                dialogueUI.CloseDialogue();
+            }
+
+            return;
+        }
+
         if (Input.GetKeyDown(interactionKey))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRange);
+            InteractableInfo_TESTING interactable = GetInteractableObject();
 
-            foreach (Collider hitCollider in hitColliders)
+            if (interactable == null)
             {
-                if (hitCollider.CompareTag("Interactable"))
-                {
-                    /*
-                        * PLEASE READ ME FIRST
-                        * Here we can have the logic to grab an item, open doors, etc.
-                        * Like interactable events kind of stuff.
-                        */
+                return;
+            }
 
-                    Debug.Log("Interacted with: " + hitCollider.name); //Leave this here for now, we can remove it later. It is just to test if the interaction is working.
+            Debug.Log("Interacted with: " + interactable.name);
 
-                    NPCInterectable_TESTING interactableNPC = hitCollider.GetComponent<NPCInterectable_TESTING>();
+            /*
+             * PLEASE READ ME FIRST
+             * Here we can have the logic to grab an item,
+             * open doors, etc.
+             * Like interactable events kind of stuff.
+             */
 
-                    if (interactableNPC != null)
-                    {
-                        interactableNPC.Interact();
-                    }
+             //NPC
+             NPCInterectable_TESTING interactableNPC = interactable.GetComponentInParent<NPCInterectable_TESTING>();
 
-                }
+             if (interactableNPC != null)
+            {
+                interactableNPC.Interact();
+            }
+
+            else
+            {
+                Debug.Log("This interable doesn't have the NPC component.");
             }
         }
+    }
+
+    public bool isDialogueOpen()
+    {
+        if (dialogueUI != null)
+        {
+            if (dialogueUI.IsDialogueOpen() == true)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public InteractableInfo_TESTING GetInteractableObject()
@@ -79,6 +119,6 @@ public class PlayerInterection_TESTING : MonoBehaviour
             }
         }
 
-        return closestInteractable; 
+        return closestInteractable;
     }
 }

@@ -94,6 +94,7 @@ MonoBehaviour:
   interactableData: {fileID: 11400000, guid: de148c20f0a17ba47844c93f6a42baf5, type: 2}
   npcData: {fileID: 11400000, guid: ae993cc8a01b48a4484b81e852500f71, type: 2}
   npcInteractable: {fileID: 0}
+  interactionHelper: {fileID: 0}
 --- !u!1 &8825341822904372856
 GameObject:
   m_ObjectHideFlags: 0
