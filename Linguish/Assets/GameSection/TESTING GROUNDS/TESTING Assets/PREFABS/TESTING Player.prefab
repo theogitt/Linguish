@@ -186,6 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInterection_TESTING
   interactionRange: 2
   interactionKey: 101
+  advanceDialogue: 32
+  dialogueUI: {fileID: 0}
 --- !u!114 &6182901353073214784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcfe8a7fa8cb974aa50ed33e2aff03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement_TESTING
-  pController: {fileID: 0}
+  pController: {fileID: 2224203072669895872}
   spd: 12
   SmoothTurn: 0.1
   turnSmoothVelocity: 0.1

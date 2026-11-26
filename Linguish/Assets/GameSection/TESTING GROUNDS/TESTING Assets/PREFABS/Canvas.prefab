@@ -767,6 +767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2148009701776171779}
+  - component: {fileID: 9207067134158834246}
   m_Layer: 5
   m_Name: Dialogue UI
   m_TagString: Untagged
@@ -791,9 +792,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9207067134158834246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627106951021043448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d58623fa43f8244b47a26afc511dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueUI_TESTING
+  containerDialogueUI: {fileID: 7647418740396757809}
+  dialogueText: {fileID: 1807085435896082613}
+  interactableName: {fileID: 1072518481146435153}
 --- !u!1 &7647418740396757809
 GameObject:
   m_ObjectHideFlags: 0

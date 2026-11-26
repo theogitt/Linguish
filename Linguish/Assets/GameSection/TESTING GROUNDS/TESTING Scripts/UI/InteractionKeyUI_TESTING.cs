@@ -15,7 +15,13 @@ public class InteractionKeyUI_TESTING : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Vector2 offset = new Vector2(80f, 20f); // Use this to move around the helper, we can just leave it here after just in case we want to move it again
 
-
+    void Awake()
+    {
+        if (playerInteraction == null)
+        {
+            playerInteraction = FindAnyObjectByType<PlayerInterection_TESTING>();
+        }
+    }
     private void Start()
     {
 
